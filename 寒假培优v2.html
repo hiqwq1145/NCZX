@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- Develop By 代达罗斯 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寒假培优</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --success: #1dd1a1;
+        }
+        
+        body {
+            background: linear-gradient(-45deg, 
+        #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, 
+        #c2e9fb, #a1c4fd, #d4fc79, #96e6a1,
+        #fccb90, #d57eeb, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 动态元素 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 25%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+            display: none;
+            position: relative;
+        }
+        
+        .card.active {
+            display: block;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.8rem;
+            margin: 20px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-btn {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .name-list {
+            min-height: 300px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        .name-item {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .name-item:hover {
+            background: #e9ecef;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 5px 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3f43a6;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #ee5253;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #10ac84;
+            transform: translateY(-2px);
+        }
+        
+        .input-group {
+            display: flex;
+            margin: 15px 0;
+        }
+        
+        input, select, textarea {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+        
+        .input-btn {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .input-btn:hover {
+            background: #3f43a6;
+        }
+        
+        .result-area {
+            text-align: center;
+            padding: 30px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 12px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .selected-name {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+            transition: all 0.3s;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        
+        .multiple-names {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .name-card {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .name-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 0; transform: translateY(-20px) scale(0.9); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(106, 17, 203, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(106, 17, 203, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(106, 17, 203, 0.5); }
+        }
+        
+        .history-list {
+            min-height: 200px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .history-item {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            border-left: 4px solid var(--primary);
+            animation: fadeIn 0.5s;
+            font-size: 1.1rem;
+        }
+        .history-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        .history-time {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        .control-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .control-group .btn {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .pulse {
+            animation: pulseAnimation 1s infinite;
+        }
+        
+        @keyframes pulseAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .action-icon {
+            cursor: pointer;
+            padding: 5px;
+            color: #6c757d;
+            transition: all 0.2s;
+        }
+        
+        .action-icon:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #6c757d;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .custom-pick {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .custom-pick label {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .number-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .number-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+        
+        .number-btn:hover {
+            background: #3f43a6;
+            transform: scale(1.1);
+        }
+        
+        .number-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .number-input input {
+            width: 70px;
+            height: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            border-radius: 4px;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+        
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* 名字池UI样式 */
+        .name-pool-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .name-pool-container.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+        
+        .name-pool-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .name-pool-label {
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+        
+        .name-pool-count {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .name-pool-progress {
+            width: 100px;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .name-pool-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        /* 默认名单区域 */
+        .default-names {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+        }
+        
+        .default-names h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* 版本信息 */
+        .version-info {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            color: #000;
+            font-size: 0.9rem;
+            text-align: right;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 12px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .version-info p {
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        /* 重复点名开关样式 */
+        .repeat-toggle-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .repeat-toggle-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .repeat-toggle-label {
+            font-weight: 600;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+        
+        .toggle-status {
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .name-pool-container, .repeat-toggle-container {
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 15px;
+                justify-content: center;
+                width: 100%;
+                border-radius: 8px;
+            }
+            
+            .selected-name {
+                font-size: 2.5rem;
+            }
+            
+            .name-card {
+                padding: 12px 20px;
+                font-size: 1.8rem;
+            }
+            
+            .version-info {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+            }
+            
+            .repeat-toggle-container {
+                order: -1;
+                margin-top: 10px;
+            }
+            
+            .name-pool-container {
+                margin-top: 10px;
+            }
+        }
+        
+        .text-muted {
+            color: #6c757d !important;
+        }
+        
+        .text-muted small {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .glow-effect {
+            animation: glow 2s infinite;
+        }
+        
+        /* 顶部控制栏容器 */
+        .top-controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .top-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动粒子背景 -->
+    <div class="floating-particles" id="particles"></div>
+    
+    <h1><i class="fas fa-users"></i> 寒假培优</h1>
+    
+    <!-- 顶部控制栏 -->
+    <div class="top-controls">
+        <!-- 重复点名开关 -->
+        <div class="repeat-toggle-container">
+            <span class="repeat-toggle-label">重复点名:</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="repeatToggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-status" id="repeatStatus">否</span>
+        </div>
+        
+        <!-- 名字池UI -->
+        <div class="name-pool-container" id="namePoolContainer">
+            <span class="name-pool-label">名字池:</span>
+            <span class="name-pool-count" id="namePoolCount">0</span>
+            <div class="name-pool-progress">
+                <div class="name-pool-progress-bar" id="namePoolProgress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav-container">
+        <div class="nav-btn active" data-target="nameManage"><i class="fas fa-list"></i> 名单管理</div>
+        <div class="nav-btn" data-target="nameImport"><i class="fas fa-file-import"></i> 批量导入</div>
+        <div class="nav-btn" data-target="namePick"><i class="fas fa-random"></i> 点名</div>
+        <div class="nav-btn" data-target="history"><i class="fas fa-history"></i> 历史记录</div>
+    </div>
+    
+    <div class="container">
+        <!-- 名单管理卡片 -->
+        <div class="card active" id="nameManage">
+            <h2><i class="fas fa-list"></i> 学生名单管理</h2>
+            
+            <!-- 默认名单区域 -->
+            <div class="default-names">
+                <h3><i class="fas fa-star"></i> 默认名单</h3>
+                <p>点击按钮可一次性添加所有默认姓名</p>
+            </div>
+            
+            <div class="name-list" id="nameList">
+                <div class="empty-message">请添加学生姓名</div>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="输入学生姓名">
+                <button class="input-btn" id="addNameBtn"><i class="fas fa-plus"></i> 添加</button>
+            </div>
+            
+            <div class="control-group">
+                <button class="btn btn-danger" id="clearBtn"><i class="fas fa-trash"></i> 清空名单</button>
+                <button class="btn btn-success" id="loadDefaultBtn"><i class="fas fa-download"></i> 加载默认名单</button>
+            </div>
+        </div>
+        
+        <!-- 批量导入卡片 -->
+        <div class="card" id="nameImport">
+            <h2><i class="fas fa-file-import"></i> 批量导入名单</h2>
+            
+            <p style="margin-bottom: 15px;">请输入学生名单，每行一个名字或用逗号分隔：</p>
+            <textarea id="importArea" placeholder="" style="width: 100%; height: 200px; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 15px;"></textarea>
+            
+            <div class="control-group">
+                <button class="btn btn-primary" id="importBtn"><i class="fas fa-file-import"></i> 导入名单</button>
+                <button class="btn btn-danger" id="clearImportBtn"><i class="fas fa-times"></i> 清空</button>
+            </div>
+        </div>
+        
+        <!-- 点名卡片 -->
+        <div class="card" id="namePick">
+            <h2><i class="fas fa-random"></i> 点名</h2>
+            
+            <div class="result-area">
+                <div id="promptText">点击按钮开始点名</div>
+                <div class="selected-name" id="selectedName"></div>
+                <div class="multiple-names" id="multipleNames">
+                    <!-- 多点名结果将通过JS动态添加 -->
+                </div>
+            </div>
+            
+            <div class="custom-pick">
+                <label>点名数量：</label>
+                <div class="number-input">
+                    <button class="number-btn" id="decreaseBtn">-</button>
+                    <input type="number" id="pickCount" min="1" value="1">
+                    <button class="number-btn" id="increaseBtn">+</button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <button class="btn btn-primary" id="pickBtn"><i class="fas fa-user"></i> 开始点名</button>
+                <button class="btn btn-danger" id="resetPickBtn"><i class="fas fa-redo"></i> 重置本轮</button>
+            </div>
+        </div>
+        
+        <!-- 历史记录卡片 -->
+        <div class="card" id="history">
+            <h2><i class="fas fa-history"></i> 点名历史记录</h2>
+            
+            <div class="history-list" id="historyList">
+                <div class="empty-message">暂无点名记录</div>
+            </div>
+            
+            <button class="btn btn-danger" id="clearHistoryBtn" style="margin-top: 10px; width: 100%;">
+                <i class="fas fa-trash"></i> 清空历史
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 控制动画显示的变量
+        const SHOW_ANIMATION = true; // 改为false可以关闭动画
+        
+        // 默认名单数据
+        const DEFAULT_NAMES = ["王一菲","唐峥","李维轩","马依依","马浩博","关恩乔","吕诗涵","孟颢然","周子琪","胡予涵","李正皓","孙海可","宫语璠","宋禹亨","陈景瀚","李昱辰","张诗唯","袁夕雯","寇意若","刘起鸣","贾斯涵","张腾逸","李沛临","孙杉宁","赵梓轶","姜炫弛","韩依彤","何彦荀","殷跃","刘厚泽","陈彦荣","郝乐优","金紫煜","张芯铭","白寅熙","张哲铭","白梓钰","许欣然","田紫晨","尤禹然","任书谊","刘子依","于储宾","张鹤轩","杨舒涵","李禹圻","栾世轩","高浚哲","胡靖婉","孙晟睿","徐子翕","关子伊","白宇轩","王琳达","张梓涵","王嘉阳","孙艺航","钱佳琦","孙海曈","赵梓涵","么鸿翔","周宥李","吕彦铭","王辛彤彤","刘笑源","那颢琦","于子涵","侯茗溪","李宇桐","谷可","刘羽墨","尹佳","杨雨欣","隋博馨","陈黛宁","朱雅馨","朱珂芃宇","杨子鉴"];
+        
+        // 全局变量
+        let names = JSON.parse(localStorage.getItem('nameList')) || [];
+        let history = JSON.parse(localStorage.getItem('pickHistory')) || [];
+        let currentPicked = JSON.parse(localStorage.getItem('currentPicked')) || [];
+        let allowRepeat = localStorage.getItem('allowRepeat') !== 'false'; // 默认为true（不允许重复）
+        
+        // 更新重复点名状态
+        function updateRepeatToggle() {
+            const repeatToggle = document.getElementById('repeatToggle');
+            const repeatStatus = document.getElementById('repeatStatus');
+            const namePoolContainer = document.getElementById('namePoolContainer');
+            
+            repeatToggle.checked = !allowRepeat; // 开关状态：开=允许重复，关=不允许重复
+            repeatStatus.textContent = allowRepeat ? '否' : '是';
+            
+            // 更新名字池UI显示状态
+            if (allowRepeat) {
+                namePoolContainer.classList.remove('hidden');
+                updateNamePoolUI();
+            } else {
+                namePoolContainer.classList.add('hidden');
+                // 清空当前已点名单，因为允许重复时不需要记录
+                currentPicked = [];
+                localStorage.setItem('currentPicked', JSON.stringify(currentPicked));
+                renderNameList();
+            }
+            
+            // 保存设置到本地存储
+            localStorage.setItem('allowRepeat', allowRepeat);
+        }
+        
+        // 更新名字池UI
+        function updateNamePoolUI() {
+            if (!allowRepeat) return; // 如果允许重复，不显示名字池
+            
+            const availableCount = names.length - currentPicked.length;
+            const namePoolCount = document.getElementById('namePoolCount');
+            const namePoolProgress = document.getElementById('namePoolProgress');
+            
+            namePoolCount.textContent = `${availableCount}/${names.length}`;
+            
+            // 更新进度条
+            if (names.length > 0) {
+                const percentage = (availableCount / names.length) * 100;
+                namePoolProgress.style.width = `${percentage}%`;
+                
+                // 根据剩余数量改变颜色
+                if (percentage < 20) {
+                    namePoolProgress.style.background = 'linear-gradient(90deg, var(--accent), #ff8c8c)';
+                } else if (percentage < 50) {
+                    namePoolProgress.style.background = 'linear-gradient(90deg, #ffa726, #ffb74d)';
+                } else {
+                    namePoolProgress.style.background = 'linear-gradient(90deg, var(--primary), var(--secondary))';
+                }
+            } else {
+                namePoolProgress.style.width = '0%';
+            }
+        }
+        
+        // 渲染名单
+        function renderNameList() {
+            const nameList = document.getElementById('nameList');
+            nameList.innerHTML = '';
+            
+            if (names.length === 0) {
+                nameList.innerHTML = '<div class="empty-message">请添加学生姓名</div>';
+                updateNamePoolUI();
+                return;
+            }
+            
+            names.forEach((name, index) => {
+                const nameItem = document.createElement('div');
+                nameItem.className = 'name-item fade-in';
+                const isPicked = allowRepeat ? false : currentPicked.includes(name);
+                
+                nameItem.innerHTML = `
+                    <span class="${isPicked ? 'text-muted' : ''}">${name} ${isPicked ? '<small>(已点)</small>' : ''}</span>
+                    <div>
+                        <i class="fas fa-times action-icon delete-btn" data-index="${index}"></i>
+                    </div>
+                `;
+                nameList.appendChild(nameItem);
+            });
+            
+            // 添加删除事件监听
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const nameToDelete = names[index];
+                    
+                    // 如果这个名字已经被点过，也从已点列表中移除
+                    const pickedIndex = currentPicked.indexOf(nameToDelete);
+                    if (pickedIndex !== -1) {
+                        currentPicked.splice(pickedIndex, 1);
+                        localStorage.setItem('currentPicked', JSON.stringify(currentPicked));
+                    }
+                    
+                    names.splice(index, 1);
+                    localStorage.setItem('nameList', JSON.stringify(names));
+                    renderNameList();
+                    updateNamePoolUI();
+                });
+            });
+            
+            updateNamePoolUI();
+        }
+        
+        // 渲染历史记录
+        function renderHistory() {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = '';
+            
+            if (history.length === 0) {
+                historyList.innerHTML = '<div class="empty-message">暂无点名记录</div>';
+                return;
+            }
+            
+            // 只显示最近20条记录
+            const recentHistory = history.slice(-20).reverse();
+            
+            recentHistory.forEach((record, index) => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item fade-in';
+                historyItem.innerHTML = `
+                <div>
+                    <span class="history-name">${record}</span>
+                </div>
+            `;
+                historyList.appendChild(historyItem);
+            });
+        }
+        
+        // 选择并显示名字
+        function selectAndDisplayNames(actualCount, availableNames) {
+            const selectedNames = [];
+            
+            if (allowRepeat) {
+                // 不允许重复：从可用名单中随机选择
+                const tempAvailable = [...availableNames];
+                
+                for (let i = 0; i < actualCount; i++) {
+                    const randomIndex = Math.floor(Math.random() * tempAvailable.length);
+                    selectedNames.push(tempAvailable[randomIndex]);
+                    tempAvailable.splice(randomIndex, 1);
+                }
+            } else {
+                // 允许重复：从所有名单中随机选择
+                for (let i = 0; i < actualCount; i++) {
+                    const randomIndex = Math.floor(Math.random() * names.length);
+                    selectedNames.push(names[randomIndex]);
+                }
+            }
+            
+            const selectedName = document.getElementById('selectedName');
+            const promptText = document.getElementById('promptText');
+            const multipleNames = document.getElementById('multipleNames');
+            
+            // 清空之前的结果
+            selectedName.textContent = '';
+            multipleNames.innerHTML = '';
+            
+            if (actualCount === 1) {
+                // 单点名模式
+                selectedName.textContent = selectedNames[0];
+                selectedName.classList.add('glow-effect');
+                promptText.textContent = '被点到的学生';
+            } else {
+                // 多点名模式
+                promptText.textContent = `点中了 ${actualCount} 名学生`;
+                
+                // 为每个选中的名字创建卡片
+                selectedNames.forEach((name, index) => {
+                    const nameCard = document.createElement('div');
+                    nameCard.className = 'name-card glow-effect';
+                    nameCard.textContent = name;
+                    
+                    // 延迟显示每个卡片
+                    nameCard.style.animationDelay = `${index * 0.1}s`;
+                    
+                    multipleNames.appendChild(nameCard);
+                });
+            }
+            
+            // 更新记录
+            if (allowRepeat) {
+                // 不允许重复：添加到已点名单
+                currentPicked = currentPicked.concat(selectedNames);
+                localStorage.setItem('currentPicked', JSON.stringify(currentPicked));
+            }
+            
+            const timestamp = new Date().toLocaleTimeString();
+            history.push(`点中了: ${selectedNames.join(', ')} (${timestamp})`);
+            if (history.length > 50) {
+                history = history.slice(-50);
+            }
+            localStorage.setItem('pickHistory', JSON.stringify(history));
+            
+            renderNameList();
+            renderHistory();
+        }
+        
+        // 点名函数
+        function pickNames(count) {
+            if (names.length === 0) {
+                alert('请先添加学生姓名！');
+                return;
+            }
+            
+            if (allowRepeat && currentPicked.length >= names.length) {
+                alert('所有学生都已被点到，请重置本轮点名！');
+                return;
+            }
+            
+            const availableNames = allowRepeat ? names.filter(name => !currentPicked.includes(name)) : names;
+            const actualCount = allowRepeat ? Math.min(count, availableNames.length) : count;
+            
+            if (allowRepeat && actualCount === 0) {
+                alert('没有更多学生可点！');
+                return;
+            }
+            
+            const selectedName = document.getElementById('selectedName');
+            const promptText = document.getElementById('promptText');
+            const multipleNames = document.getElementById('multipleNames');
+            
+            if (SHOW_ANIMATION) {
+                // 点名动画效果
+                selectedName.textContent = '';
+                multipleNames.innerHTML = '';
+                promptText.textContent = '点名中...';
+                
+                // 模拟随机选择过程
+                let counter = 0;
+                const interval = setInterval(() => {
+                    const randomIndex = Math.floor(Math.random() * availableNames.length);
+                    
+                    if (actualCount === 1) {
+                        selectedName.textContent = availableNames[randomIndex];
+                    } else {
+                        // 多点名模式下显示多个随机名字
+                        multipleNames.innerHTML = '';
+                        for (let i = 0; i < actualCount; i++) {
+                            const randomName = availableNames[Math.floor(Math.random() * availableNames.length)];
+                            const nameCard = document.createElement('div');
+                            nameCard.className = 'name-card';
+                            nameCard.textContent = randomName;
+                            nameCard.style.animation = 'none';
+                            multipleNames.appendChild(nameCard);
+                        }
+                    }
+                    
+                    counter++;
+                    if (counter > 10) {
+                        clearInterval(interval);
+                        
+                        // 确定最终选择
+                        setTimeout(() => {
+                            selectAndDisplayNames(actualCount, availableNames);
+                        }, 300);
+                    }
+                }, 100);
+            } else {
+                // 不显示动画，直接选择
+                selectAndDisplayNames(actualCount, availableNames);
+            }
+        }
+        
+        // 创建浮动粒子
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // 随机大小和位置
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                
+                // 随机动画延迟和持续时间
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取DOM元素
+            const nameInput = document.getElementById('nameInput');
+            const addNameBtn = document.getElementById('addNameBtn');
+            const pickBtn = document.getElementById('pickBtn');
+            const resetPickBtn = document.getElementById('resetPickBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+            const importBtn = document.getElementById('importBtn');
+            const importArea = document.getElementById('importArea');
+            const clearImportBtn = document.getElementById('clearImportBtn');
+            const pickCountInput = document.getElementById('pickCount');
+            const decreaseBtn = document.getElementById('decreaseBtn');
+            const increaseBtn = document.getElementById('increaseBtn');
+            const loadDefaultBtn = document.getElementById('loadDefaultBtn');
+            const repeatToggle = document.getElementById('repeatToggle');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const cards = document.querySelectorAll('.card');
+            
+            // 初始化页面
+            createParticles();
+            updateRepeatToggle();
+            renderNameList();
+            renderHistory();
+            
+            // 重复点名开关事件
+            repeatToggle.addEventListener('change', function() {
+                allowRepeat = !this.checked; // 开关状态取反
+                updateRepeatToggle();
+                
+                
+            });
+            
+            // 切换导航
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // 更新活动按钮
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 显示对应的卡片
+                    cards.forEach(card => card.classList.remove('active'));
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+            
+            // 添加姓名
+            addNameBtn.addEventListener('click', function() {
+                const name = nameInput.value.trim();
+                if (name && !names.includes(name)) {
+                    names.push(name);
+                    localStorage.setItem('nameList', JSON.stringify(names));
+                    nameInput.value = '';
+                    renderNameList();
+                } else if (names.includes(name)) {
+                    alert('该姓名已存在！');
+                }
+            });
+            
+            // 按Enter键添加姓名
+            nameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addNameBtn.click();
+                }
+            });
+            
+            // 清空名单
+            clearBtn.addEventListener('click', function() {
+                if (confirm('确定要清空整个名单吗？')) {
+                    names = [];
+                    currentPicked = [];
+                    localStorage.setItem('nameList', JSON.stringify(names));
+                    localStorage.setItem('currentPicked', JSON.stringify(currentPicked));
+                    renderNameList();
+                }
+            });
+            
+            // 加载默认名单
+            loadDefaultBtn.addEventListener('click', function() {
+                if (confirm('确定要加载默认名单吗？这将添加默认名单中的所有姓名。')) {
+                    let addedCount = 0;
+                    
+                    DEFAULT_NAMES.forEach(name => {
+                        if (!names.includes(name)) {
+                            names.push(name);
+                            addedCount++;
+                        }
+                    });
+                    
+                    localStorage.setItem('nameList', JSON.stringify(names));
+                    renderNameList();
+                    
+                    alert(`成功添加 ${addedCount} 个新名字！`);
+                }
+            });
+            
+            // 清空历史
+            clearHistoryBtn.addEventListener('click', function() {
+                if (confirm('确定要清空历史记录吗？')) {
+                    history = [];
+                    localStorage.setItem('pickHistory', JSON.stringify(history));
+                    renderHistory();
+                }
+            });
+            
+            // 导入名单
+            importBtn.addEventListener('click', function() {
+                const input = importArea.value.trim();
+                if (input) {
+                    // 支持逗号分隔或换行分隔
+                    const newNames = input.split(/[\n,]+/).map(name => name.trim()).filter(name => name);
+                    let addedCount = 0;
+                    
+                    newNames.forEach(name => {
+                        if (!names.includes(name)) {
+                            names.push(name);
+                            addedCount++;
+                        }
+                    });
+                    
+                    localStorage.setItem('nameList', JSON.stringify(names));
+                    renderNameList();
+                    
+                    alert(`成功导入 ${addedCount} 个新名字！`);
+                    importArea.value = '';
+                    
+                    // 切换回名单管理
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    cards.forEach(card => card.classList.remove('active'));
+                    document.querySelector('[data-target="nameManage"]').classList.add('active');
+                    document.getElementById('nameManage').classList.add('active');
+                }
+            });
+            
+            // 清空导入区域
+            clearImportBtn.addEventListener('click', function() {
+                importArea.value = '';
+            });
+            
+            // 调整点名数量
+            decreaseBtn.addEventListener('click', function() {
+                let value = parseInt(pickCountInput.value) || 1;
+                if (value > 1) {
+                    pickCountInput.value = value - 1;
+                }
+            });
+            
+            increaseBtn.addEventListener('click', function() {
+                let value = parseInt(pickCountInput.value) || 1;
+                pickCountInput.value = value + 1;
+            });
+            
+            // 开始点名
+            pickBtn.addEventListener('click', function() {
+                const count = parseInt(pickCountInput.value) || 1;
+                pickNames(count);
+            });
+            
+            // 重置本轮
+            resetPickBtn.addEventListener('click', function() {
+                if (allowRepeat) {
+                    currentPicked = [];
+                    localStorage.setItem('currentPicked', JSON.stringify(currentPicked));
+                }
+                
+                const selectedName = document.getElementById('selectedName');
+                const promptText = document.getElementById('promptText');
+                const multipleNames = document.getElementById('multipleNames');
+                
+                selectedName.textContent = '';
+                selectedName.classList.remove('glow-effect');
+                multipleNames.innerHTML = '';
+                promptText.textContent = '点击按钮开始点名';
+                renderNameList();
+                alert('本轮点名已重置！');
+            });
+        });
+    </script>
+</body>
+</html>
