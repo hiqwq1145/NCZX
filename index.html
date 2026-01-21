@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <!-- Develop By 代达罗斯 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>寒假培优 26.01.20</title>
+    <title>寒假培优 26.01.21</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -735,7 +735,7 @@
     <!-- 浮动粒子背景 -->
     <div class="floating-particles" id="particles"></div>
     
-    <h1><i class="fas fa-users"></i> 寒假培优 1.20</h1>
+    <h1><i class="fas fa-users"></i> 寒假培优 1.21</h1>
     
     <!-- 顶部控制栏 -->
     <div class="top-controls">
@@ -788,7 +788,7 @@
             
             <div class="control-group">
                 <button class="btn btn-danger" id="clearBtn"><i class="fas fa-trash"></i> 清空名单</button>
-                <button class="btn btn-success" id="loadDefaultBtn"><i class="fas fa-download"></i> 加载默认（1.20）名单</button>
+                <button class="btn btn-success" id="loadDefaultBtn"><i class="fas fa-download"></i> 加载默认（1.21）名单</button>
             </div>
         </div>
         
@@ -851,7 +851,7 @@
         const SHOW_ANIMATION = true; // 改为false可以关闭动画
         
         // 默认名单数据
-        const DEFAULT_NAMES = ["马浩博","关恩乔","李正皓","孙海可","宫语璠","宋禹亨","李昱辰","张诗唯","刘起鸣","张腾逸","赵梓轶","殷跃","刘厚泽","陈彦荣","郝乐优","白寅熙","张哲铭","白梓钰","田紫晨","任书谊","刘子依","张鹤轩","杨舒涵","李禹圻","栾世轩","高浚哲","孙晟睿","白宇轩","王琳达","王嘉阳","钱佳琦","孙海曈","赵梓涵","么鸿翔","吕彦铭","王辛彤彤","刘羽墨","尹佳","杨子鉴"];
+        const DEFAULT_NAMES = ["王一菲","李维轩","马依依","马浩博","关恩乔","李正皓","孙海可","宫语璠","宋禹亨","李昱辰","张诗唯","张腾逸","赵梓轶","何彦荀","刘厚泽","陈彦荣","郝乐优","白寅熙","张哲铭","白梓钰","许欣然","尤禹然","任书谊","刘子依","于储宾","张鹤轩","杨舒涵","栾世轩","孙晟睿","徐子翕","白宇轩","王琳达","王嘉阳","钱佳琦","赵梓涵","么鸿翔","周宥李","吕彦铭","王辛彤彤","刘羽墨","尹佳","杨子鉴"];
         
         // 全局变量
         let names = JSON.parse(localStorage.getItem('nameList')) || [];
@@ -1223,7 +1223,7 @@
             
             // 加载默认名单
             loadDefaultBtn.addEventListener('click', function() {
-                if (confirm('确定要加载默认（1.20）名单吗？这将添加默认名单中的所有姓名。')) {
+                if (confirm('确定要加载默认（1.21）名单吗？这将添加默认名单中的所有姓名。')) {
                     let addedCount = 0;
                     
                     DEFAULT_NAMES.forEach(name => {
@@ -1325,5 +1325,6 @@
 </body>
 
 </html>
+
 
 
