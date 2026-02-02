@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>26.02.01</title>
+    <title>26.02.02</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* 保持原有的所有样式不变 */
@@ -499,7 +499,7 @@
             transition: width 0.5s ease;
         }
         
-        /* 默认（26.02.01）区域 */
+        /* 默认（26.02.02）区域 */
         .default-names {
             margin: 15px 0;
             padding: 15px;
@@ -1238,7 +1238,7 @@
     <!-- 浮动粒子背景 -->
     <div class="floating-particles" id="particles"></div>
     
-    <h1><i class="fas fa-users"></i> 26.02.01</h1>
+    <h1><i class="fas fa-users"></i> 26.02.02</h1>
     
     <!-- 名字池UI -->
     <div class="name-pool-container" id="namePoolContainer">
@@ -1275,9 +1275,9 @@
         <div class="card active" id="nameManage">
             <h2><i class="fas fa-users"></i> 学生名单管理</h2>
             
-            <!-- 默认（26.02.01）区域 -->
+            <!-- 默认（26.02.02）区域 -->
             <div class="default-names">
-                <h3><i class="fas fa-star"></i> 默认（26.02.01）</h3>
+                <h3><i class="fas fa-star"></i> 默认（26.02.02）</h3>
                 <p>系统已自动加载默认班级名单</p>
             </div>
             
@@ -1441,8 +1441,8 @@
             
             <div class="about-content">
                 <div class="version-card">
-                    <div class="version-number">v2.0.6</div>
-                    <h3>26.02.01</h3>
+                    <div class="version-number">v2.0.7</div>
+                    <h3>26.02.02</h3>
                   
                 </div>
                 
@@ -1493,7 +1493,7 @@
     <script>
         // ==================== 配置开关 ====================
         // 版本信息 - 每次更新时修改这里
-        const VERSION = "2.0.6";
+        const VERSION = "2.0.7";
         
         // 配置开关：是否显示数据管理页面
         const SHOW_DATA_MANAGEMENT = false; // 设置为 true 时显示数据管理页面
@@ -1506,9 +1506,7 @@
         const STORAGE_PREFIX = `rollcall_v${VERSION.replace(/\./g, '_')}_`;
         
         // ==================== 默认数据 ====================
-        const DEFAULT_NAMES = ["王一菲","唐峥","李维轩","马依依","马浩博","关恩乔","吕诗涵","孟颢然","周子琪","胡予涵","李正皓","孙海可","宫语璠","宋禹亨","陈景瀚","李昱辰","张诗唯","袁夕雯","寇意若","刘起鸣","贾斯涵","张腾逸","李沛临","孙杉宁","赵梓轶","姜炫弛","韩依彤","何彦荀","殷跃","刘厚泽","陈彦荣","郝乐优","金紫煜","张芯铭","白寅熙","张哲铭","白梓钰","许欣然","田紫晨","尤禹然","任书谊","刘子依","于储宾","张鹤轩","杨舒涵","李禹圻","栾世轩","高浚哲","胡靖婉","孙晟睿","徐子翕","关子伊","白宇轩","王琳达","张梓涵","王嘉阳","孙艺航","钱佳琦","孙海曈","赵梓涵","么鸿翔","周宥李","吕彦铭","王辛彤彤","刘笑源","那颢琦","于子涵","侯茗溪","李宇桐","谷可","刘羽墨","尹佳","杨雨欣","隋博馨","陈黛宁","朱雅馨","朱珂芃宇","杨子鉴"];
-        
-        // ==================== 全局变量 ====================
+        const DEFAULT_NAMES = ["马依依","关恩乔","李正皓","孙海可","宫语璠","宋禹亨","李昱辰","张诗唯","张腾逸","李沛临","赵梓轶","陈彦荣","郝乐优","白寅熙","任书谊","刘子依","于储宾","张鹤轩","杨舒涵","李禹圻","栾世轩","高浚哲","关子伊","白宇轩","钱佳琦","赵梓涵","么鸿翔","周宥李","王辛彤彤","那颢琦","尹佳"];
         // 使用版本化存储键初始化数据
         let names = JSON.parse(localStorage.getItem(`${STORAGE_PREFIX}nameList`)) || [];
         let history = JSON.parse(localStorage.getItem(`${STORAGE_PREFIX}pickHistory`)) || [];
@@ -1581,7 +1579,7 @@
                     saveClasses();
                 }
                 
-                console.log('已自动加载默认（26.02.01）名单');
+                console.log('已自动加载默认（26.02.02）名单');
             }
         }
         
@@ -2847,3 +2845,4 @@
     </script>
 </body>
 </html>
+
