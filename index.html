@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>26.02.24</title>
+    <title>26.02.25</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* 保持原有的所有样式不变 */
@@ -499,7 +499,7 @@
             transition: width 0.5s ease;
         }
         
-        /* 默认（26.02.24）区域 */
+        /* 默认（26.02.25）区域 */
         .default-names {
             margin: 15px 0;
             padding: 15px;
@@ -1238,7 +1238,7 @@
     <!-- 浮动粒子背景 -->
     <div class="floating-particles" id="particles"></div>
     
-    <h1><i class="fas fa-users"></i> 26.02.24</h1>
+    <h1><i class="fas fa-users"></i> 26.02.25</h1>
     
     <!-- 名字池UI -->
     <div class="name-pool-container" id="namePoolContainer">
@@ -1275,9 +1275,9 @@
         <div class="card active" id="nameManage">
             <h2><i class="fas fa-users"></i> 学生名单管理</h2>
             
-            <!-- 默认（26.02.24）区域 -->
+            <!-- 默认（26.02.25）区域 -->
             <div class="default-names">
-                <h3><i class="fas fa-star"></i> 默认（26.02.24）</h3>
+                <h3><i class="fas fa-star"></i> 默认（26.02.25）</h3>
                 <p>系统已自动加载默认班级名单</p>
             </div>
             
@@ -1441,8 +1441,8 @@
             
             <div class="about-content">
                 <div class="version-card">
-                    <div class="version-number">v2.1.5</div>
-                    <h3>26.02.24</h3>
+                    <div class="version-number">v2.1.6</div>
+                    <h3>26.02.25</h3>
                   
                 </div>
                 
@@ -1506,7 +1506,7 @@
         const STORAGE_PREFIX = `rollcall_v${VERSION.replace(/\./g, '_')}_`;
         
         // ==================== 默认数据 ====================
-        const DEFAULT_NAMES =["关恩乔","胡予涵","李正皓","孙海可","宫语璠","李昱辰","张诗唯","张腾逸","李沛临","孙杉宁","赵梓轶","殷跃","刘厚泽","郝乐优","尤禹然","任书谊","杨舒涵","栾世轩","孙晟睿","白宇轩","王嘉阳","钱佳琦","孙海曈","赵梓涵","么鸿翔","尹佳","陈黛宁","杨子鉴"];
+        const DEFAULT_NAMES =["关恩乔","周子琪","胡予涵","李正皓","孙海可","宫语璠","李昱辰","张诗唯","张腾逸","李沛临","孙杉宁","赵梓轶","殷跃","刘厚泽","陈彦荣","白寅熙","尤禹然","任书谊","刘子依","张鹤轩","杨舒涵","栾世轩","孙晟睿","徐子翕","白宇轩","王嘉阳","钱佳琦","孙海曈","赵梓涵","么鸿翔","那颢琦","尹佳","杨雨欣","杨子鉴"];
         // 使用版本化存储键初始化数据
         let names = JSON.parse(localStorage.getItem(`${STORAGE_PREFIX}nameList`)) || [];
         let history = JSON.parse(localStorage.getItem(`${STORAGE_PREFIX}pickHistory`)) || [];
@@ -1518,7 +1518,7 @@
         let classes = {
             default: {
                 id: 'default',
-                name: '默认班级(26.02.24)',
+                name: '默认班级(26.02.25)',
                 students: [],
                 history: [],
                 currentPicked: []
@@ -1579,7 +1579,7 @@
                     saveClasses();
                 }
                 
-                console.log('已自动加载默认（26.02.24）名单');
+                console.log('已自动加载默认（26.02.25）名单');
             }
         }
         
@@ -2845,6 +2845,7 @@
     </script>
 </body>
 </html>
+
 
 
 
